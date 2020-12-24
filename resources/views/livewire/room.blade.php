@@ -32,7 +32,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($rooms as $room)
+                        @forelse($rooms as $room)
                         <tr class="hover:bg-cool-gray-200">
                             <td class="p-4">{{ $loop->iteration }}</td> 
                             <td class="p-4">
@@ -54,7 +54,13 @@
                                 </button>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="4" class="py-20 text-center">
+                                <p>Tidak ada data.</p>
+                            </td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

@@ -154,10 +154,10 @@
                             </svg>
                         </div>
                         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                            <h3 class="text-lg leading-6 font-semibold text-gray-900" id="modal-headline">Delete Room?</h3>
+                            <h3 class="text-lg leading-6 font-semibold text-gray-900" id="modal-headline">Delete Data?</h3>
                             <div class="mt-2">
                                 <p class="text-sm text-gray-500">
-                                    Are you sure you want to delete this room?.
+                                    Are you sure you want to delete this?.
                                 </p>
                             </div>
                         </div>
