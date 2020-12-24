@@ -10,3 +10,7 @@
 - `npm run dev`
 - migrasi database: `php artisan migrate --seed`
 - `php artisan serve`
+
+## Login
+- email: dev@mail.com
+- password: dev
