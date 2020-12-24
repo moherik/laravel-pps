@@ -45,7 +45,7 @@ class RoomLivewire extends Component
     public function render()
     {
         return view('livewire.room', [
-            'rooms' => Room::orderBy('created_at', 'DESC')->paginate(10)
+            'rooms' => Room::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->paginate(10)
         ]);
     }
 
