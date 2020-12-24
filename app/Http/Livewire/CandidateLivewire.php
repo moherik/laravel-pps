@@ -14,10 +14,10 @@ class CandidateLivewire extends Component
 
     public $room;
 
-    public bool $showModal = false;
-    public bool $editMode = false;
+    public $showModal = false;
+    public $editMode = false;
     public $editId = null;
-    public bool $confirmDelete = false;
+    public $confirmDelete = false;
     public $deleteId = null;
 
     public $order = null;

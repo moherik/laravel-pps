@@ -10,12 +10,12 @@ class RoomLivewire extends Component
 {
     use WithPagination;
 
-    public bool $showModal = false;
+    public $showModal = false;
 
-    public bool $editMode = false;
+    public $editMode = false;
     public $editId = null;
 
-    public bool $confirmDelete = false;
+    public $confirmDelete = false;
     public $deleteId = null;
 
     public $room_name = null;
