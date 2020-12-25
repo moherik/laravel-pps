@@ -19,6 +19,7 @@ class CreateRoomsTable extends Migration
             $table->string('room_name');
             $table->string('description')->nullable();
             $table->string('code')->unique();
+            $table->enum('status', ['OPEN','CLOSE'])->default('OPEN');
             $table->timestamps();
         });
     }

@@ -27,7 +27,8 @@
                         <tr>
                             <th class="p-4 w-15">#</th>
                             <th class="p-4">Room Name</th>
-                            <th class="p-4 w-1/6">Code</th>
+                            <th class="p-4 w-1/12">Code</th>
+                            <th class="p-4 w-1/12">Status</th>
                             <th class="p-4 w-48"></th>
                         </tr>
                     </thead>
@@ -45,6 +46,7 @@
                                 </a>
                             </td>
                             <td class="p-4 font-bold">{{ $room->code }}</td>
+                            <td class="p-4 font-bold {{ $room->status == 'OPEN' ? 'text-blue-600' : 'text-red-600' }}">{{ $room->status }}</td>
                             <td class="p-4">
                                 <button wire:click="edit({{$room->id}})" class="px-3 py-1 bg-cool-gray-600 outline-none rounded-md text-sm text-gray-200 hover:bg-cool-gray-800 focus:outline-none">
                                     Edit

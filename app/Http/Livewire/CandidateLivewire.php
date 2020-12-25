@@ -58,8 +58,10 @@ class CandidateLivewire extends Component
         $validatedData = $this->validate();
         $validatedData['room_id'] = $this->room->id;
         
-        if($uploadedImage = $this->image->storeAs('photos', time() . '-candidate.png', 'public'))
-            $validatedData['image'] = $uploadedImage;
+        if($this->image != null) {
+            if($uploadedImage = $this->image->storeAs('photos', time() . '-candidate.png', 'public'))
+                $validatedData['image'] = $uploadedImage;
+        }
 
         if(Candidate::create($validatedData))
             $this->closeModal();

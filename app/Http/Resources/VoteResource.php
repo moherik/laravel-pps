@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class RoomResource extends JsonResource
+class VoteResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,9 @@ class RoomResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'room_name' => $this->room_name,
-            'description' => $this->description,
-            'candidates' => CandidateResource::collection($this->candidates),
+            'room_id' => $this->room_id,
+            'candidate_id' => $this->candidate_id,
+            'total' => $this->total
         ];
     }
 }

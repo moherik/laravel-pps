@@ -20,7 +20,8 @@ class CandidateResource extends JsonResource
             'name' => $this->name,
             'image' => Storage::url($this->image),
             'order' => $this->order,
-            'vote' => $this->votes->sum('total'),
+            'total_vote' => $this->votes->sum('total'),
+            'percentage' => $this->percentage()
         ];
     }
 }
