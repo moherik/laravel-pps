@@ -20,6 +20,9 @@ class RoomResource extends JsonResource
             'description' => $this->description,
             'code' => $this->code,
             'status' => $this->status,
+            'valid_vote' => $this->validVotes(),
+            'invalid_vote' => $this->invalidVotes(),
+            'total_vote' => $this->totalVotes(),
         ];
     }
 }
