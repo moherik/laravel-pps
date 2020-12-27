@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             RoomTableSeeder::class,
             CandidateTableSeeder::class,
-            VoteSeeder::class,
+            // VoteSeeder::class,
         ]);
     }
 }

@@ -14,20 +14,23 @@ class VoteController extends Controller
     public function vote(Request $request)
     {
         $data = $this->validate($request, [
-            'room_id' => 'required',
-            'candidate_id' => 'nullable',
-            'total' => 'required',
+            '*.room_id' => 'required',
+            '*.candidate_id' => 'nullable',
+            '*.total' => 'required',
         ]);
 
-        if($store = Vote::create($data)) {
-            Room::where('id', $store->room_id)->update(['status' => 'CLOSE']);
-            return new VoteResource($store);
+        if($store = Vote::insert($data)) {
+            Room::where('id', $data[0]["room_id"])->update(['status' => 'CLOSE']);
+            return response()->json([
+                'status' => 'OK',
+                'message' => 'Success voting'
+            ], 200);
         }
 
         return response()->json([
-            'error' => true,
+            'status' => 'ERROR',
             'message' => 'Error voting'
-        ]);
+        ], 500);
 
     }
 

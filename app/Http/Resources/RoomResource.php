@@ -18,7 +18,8 @@ class RoomResource extends JsonResource
             'id' => $this->id,
             'room_name' => $this->room_name,
             'description' => $this->description,
-            'candidates' => CandidateResource::collection($this->candidates),
+            'code' => $this->code,
+            'status' => $this->status,
         ];
     }
 }

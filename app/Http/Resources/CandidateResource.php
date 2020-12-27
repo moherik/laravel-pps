@@ -18,7 +18,7 @@ class CandidateResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'image' => Storage::url($this->image),
+            'image' =>  $this->image != null ? Storage::url($this->image) : null,
             'order' => $this->order,
             'total_vote' => $this->votes->sum('total'),
             'percentage' => $this->percentage()

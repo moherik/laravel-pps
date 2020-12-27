@@ -30,7 +30,7 @@ class RoomController extends Controller
 
     public function candidates($roomId)
     {
-        return CandidateResource::collection(Candidate::where('room_id', $roomId)->get());
+        return CandidateResource::collection(Candidate::where('room_id', $roomId)->orderBy('order', 'ASC')->get());
     }
 
 }

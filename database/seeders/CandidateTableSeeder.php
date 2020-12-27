@@ -18,14 +18,14 @@ class CandidateTableSeeder extends Seeder
             'room_id' => 1,
             'order' => 1,
             'name' => 'Spongebob & Patrick',
-            'image' => '/photos/spongebob-patrick.jpg'
+            'image' => 'photos/spongebob-patrick.jpg'
         ]);
 
         Candidate::create([
             'room_id' => 1,
             'order' => 3,
             'name' => 'Kerang Ajaib',
-            'image' => '/photos/kerang-ajaib.jpg'
+            'image' => 'photos/kerang-ajaib.jpg'
         ]);
     }
 }

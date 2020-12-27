@@ -30,7 +30,7 @@ class Candidate extends Model
             return round($vote/$total*100, 2);
         }
 
-        return 0;
+        return round(0, 2);
     }
 
 }
