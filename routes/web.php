@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\CandidateLivewire;
 use App\Http\Livewire\RoomLivewire;
+use App\Models\Room;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +23,13 @@ Route::get('/dashboard', function () {
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::get('/', RoomLivewire::class)->name('main');
     Route::get('/rooms/{id}/candidates', CandidateLivewire::class)->name('candidate');
+
+    Route::get('/recap/{title}/{ids}', function($title, $ids) {
+        $ids = explode(',', $ids);
+        $rooms = Room::whereIn('id', $ids)->get();
+        $pdf = PDF::loadView('pdf-recap', ['rooms' => $rooms, 'title' => $title]);
+        $filename = $title . ' - ' . now()->format('d-m-Y') . '.pdf';
+        return $pdf->stream($filename);
+        // return view('pdf-recap', ['rooms' => $rooms, 'title' => $title]);
+    })->name('recap');
 });

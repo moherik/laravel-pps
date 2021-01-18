@@ -11,6 +11,7 @@ class RoomLivewire extends Component
     use WithPagination;
 
     public $showModal = false;
+    public $showRecapModal = false;
 
     public $editMode = false;
     public $editId = null;
@@ -20,6 +21,9 @@ class RoomLivewire extends Component
 
     public $room_name = null;
     public $description = null;
+
+    public $recapIds = [];
+    public $recapTitle = null;
 
     protected $rules = [
         'room_name' => 'required|string',
@@ -45,7 +49,8 @@ class RoomLivewire extends Component
     public function render()
     {
         return view('livewire.room', [
-            'rooms' => Room::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->paginate(10)
+            'rooms' => Room::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->paginate(10),
+            'recapRooms' => Room::where('user_id', auth()->user()->id)->where('status', 'CLOSE')->orderBy('created_at', 'ASC')->get()
         ]);
     }
 
@@ -58,6 +63,19 @@ class RoomLivewire extends Component
 
         if(Room::create($validatedData))
             $this->closeModal();
+    }
+
+    // Export recap
+    public function exportRecap()
+    {
+        if(isset($this->recapIds) && count($this->recapIds) > 0) {
+            return redirect()->route('recap', [
+                'title' => $this->recapTitle ?? 'Recap Data',
+                'ids' => implode(',', $this->recapIds)
+            ]);
+        } else {
+            $this->closeRecapModal();
+        }
     }
 
     // Show edit modal with specific data
@@ -133,6 +151,16 @@ class RoomLivewire extends Component
     {
         $this->deleteId = null;
         $this->confirmDelete = false;
+    }
+
+    public function showRecapModal()
+    {
+        $this->showRecapModal = true;
+    }
+
+    public function closeRecapModal()
+    {
+        $this->showRecapModal = false;
     }
 
     // Generate unique code for room
